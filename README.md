@@ -1,24 +1,58 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type        | Options            |
+|--------------------|-------------|--------------------|
+| nickname           | string      | null: false        |
+| email              | string      | null: false        |
+| password           | string      | null: false        |
+| last_name          | string      | null: false        |
+| first_name         | string      | null: false        |
+| last_name_kana     | string      | null: false        |
+| first_name_kana    | string      | null: false        |
+| birthday           | date        | null: false        |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items
+* has_many :buyers
 
-* Configuration
+## items table
 
-* Database creation
+| Column            | Type       | Options           |
+|-------------------|------------|-------------------|
+| title             | string     | null: false       |
+| text              | text       | null: false       |
+| category          | string     | null: false       |
+| condition         | string     | null: false       |
+| shipping_fee      | string     | null: false       |
+| shipping_area     | string     | null: false       |
+| shipping_days     | string     | null: false       |
+| price             | integer    | null: false       |
+| user              | references | foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :buyer
 
-* Services (job queues, cache servers, search engines, etc.)
+## buyers table
 
-* Deployment instructions
+| Column          | Type       | Options           |
+|-----------------|------------|-------------------|
+| card_num        | integer    | null: false       |
+| exp_date        | date       | foreign_key: true |
+| cvv             | integer    | foreign_key: true |
+| postal_cord     | integer    | null: false       |
+| prefecture      | string     | null: false       |
+| city            | string     | null: false       |
+| address         | string     | null: false       |
+| phone_num       | integer    | null: false       |
+| user            | references | foreign_key: true |
+| item            | references | foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :item
