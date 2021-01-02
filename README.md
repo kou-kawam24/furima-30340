@@ -20,17 +20,17 @@
 
 ## items table
 
-| Column            | Type       | Options           |
-|-------------------|------------|-------------------|
-| title             | string     | null: false       |
-| text              | text       | null: false       |
-| item_id           | integer    | null: false       |
-| item_id           | integer    | null: false       |
-| item_id           | integer    | null: false       |
-| item_id           | integer    | null: false       |
-| item_id           | integer    | null: false       |
-| price             | integer    | null: false       |
-| user              | references | foreign_key: true |
+| Column             | Type       | Options           |
+|--------------------|------------|-------------------|
+| title              | string     | null: false       |
+| text               | text       | null: false       |
+| category_id        | integer    | null: false       |
+| condition_id       | integer    | null: false       |
+| shipping_fee_id    | integer    | null: false       |
+| shipping_area_id   | integer    | null: false       |
+| ship_date_id       | integer    | null: false       |
+| price              | integer    | null: false       |
+| user               | references | foreign_key: true |
 
 ### Association
 
@@ -55,9 +55,10 @@
 | Column          | Type       | Options           |
 |-----------------|------------|-------------------|
 | postal_cord     | string     | null: false       |
-| address_id      | integer    | null: false       |
+| prefecture_id   | integer    | null: false       |
 | city            | string     | null: false       |
 | address         | string     | null: false       |
+| building        | string     |                   |
 | phone_num       | string     | null: false       |
 | order           | references | foreign_key: true |
 
