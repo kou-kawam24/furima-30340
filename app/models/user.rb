@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email, uniqueness: true
+    validates :email
     validates :birthday
 
     with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'Include both letters and numbers' } do
