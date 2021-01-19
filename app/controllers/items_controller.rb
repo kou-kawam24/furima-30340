@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_top, only: [:edit, :update]
-  binding.pry
 
   def index
     @items = Item.all.order('created_at DESC')
