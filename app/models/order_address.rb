@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_cord, :prefecture, :city, :address, :building, :phone_num
+  attr_accessor :user_id, :item_id, :postal_cord, :prefecture_id, :city, :address, :building, :phone_num
 
   with_options presence: true do
     validates :postal_cord, format: { with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly"}
@@ -11,7 +11,7 @@ class OrderAddress
   end
 
   def save
-    order = Order.create
-    Address.create(postal_cord: postal_cord, prefecture: prefecture, city: city, address: address, building: building, phone_num: phone_num, order_id: order.id)
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_cord: postal_cord, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_num: phone_num, order_id: order.id)
   end
 end
