@@ -25,14 +25,14 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include "Postal cord can't be blank"
       end
       it 'postal_cordが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        @order_address.postal_cord = "1234567"
+        @order_address.postal_cord = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Postal cord Input correctly"
+        expect(@order_address.errors.full_messages).to include 'Postal cord Input correctly'
       end
       it 'prefecture_idが{0}では保存できないこと' do
         @order_address.prefecture_id = 0
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Prefecture Select"
+        expect(@order_address.errors.full_messages).to include 'Prefecture Select'
       end
       it 'cityが空だと保存できないこと' do
         @order_address.city = nil
@@ -52,12 +52,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numに半角のハイフンを含めると保存できないこと' do
         @order_address.phone_num = '070-1111-2222'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Phone num Input only number"
+        expect(@order_address.errors.full_messages).to include 'Phone num Input only number'
       end
       it 'phone_numが10桁か11桁以外では保存できないこと' do
         @order_address.phone_num = '55555'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include "Phone num Input only number"
+        expect(@order_address.errors.full_messages).to include 'Phone num Input only number'
       end
       it 'tokenが空では登録できないこと' do
         @order_address.token = nil
