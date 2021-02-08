@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
   before_action :move_to_top
+  before_action :move_to_top2
 
   def index
     @order_address = OrderAddress.new
@@ -43,8 +44,7 @@ class OrdersController < ApplicationController
     redirect_to root_path if current_user == @item.user
   end
 
-  def move_to_top
+  def move_to_top2
     redirect_to root_path if @item.order.present?
   end
-  
 end
