@@ -42,4 +42,9 @@ class OrdersController < ApplicationController
   def move_to_top
     redirect_to root_path if current_user == @item.user
   end
+
+  def move_to_top
+    redirect_to root_path if @item.order.present?
+  end
+  
 end
