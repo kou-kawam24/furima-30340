@@ -9,6 +9,8 @@ class OrderAddress
     validates :city
     validates :address
     validates :phone_num, format: { with: /\A\d{10,11}\z/, message: 'Input only number' }
+    validates :user_id
+    validates :item_id
   end
 
   def save
