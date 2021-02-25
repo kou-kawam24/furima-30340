@@ -22,4 +22,12 @@ class Item < ApplicationRecord
     validates :shipping_area_id, numericality: { other_than: 0, message: 'Select' }
     validates :ship_date_id, numericality: { other_than: 1, message: 'Select' }
   end
+
+  def self.search(search)
+    if search != ""
+      Item.where("title LIKE(?) or text LIKE(?)", "%#{search}%", "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end
