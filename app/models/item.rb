@@ -6,11 +6,11 @@ class Item < ApplicationRecord
   belongs_to :shipping_area
   belongs_to :ship_date
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :order
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :title
     validates :text
     validates :price, numericality: { only_integer: true, message: 'Half-width number' }
